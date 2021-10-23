@@ -3,6 +3,7 @@ import { useState } from "react";
 import bgimg from "./assets/background.jpg"
 import Home from "./components/Home";
 import Game from "./components/Game";
+import NavBar from "./components/NavBar";
 
 const Background = styled.div`
   && {
@@ -10,11 +11,11 @@ const Background = styled.div`
     width: 100vw;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
     background-image: url(${bgimg});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    background: ${props => props.inGame ? "var(--background-color)" : ""};
     position: absolute;
     top: 0;
     left: 0;
@@ -22,7 +23,7 @@ const Background = styled.div`
     transition: all 300ms ease-in-out;
     transform: ${props => props.inGame ? "translateY(20vh)" : "translateY(0vh)"};
     border-radius: ${props => props.inGame ? "10px" : "0"};
-    opacity: ${props => props.inGame ? ".7" : "1"};
+    opacity: ${props => props.inGame ? ".8" : "1"};
   }
 `;
 
@@ -42,11 +43,10 @@ const App = () => {
   
       if(!res.ok) return {status: res.status, statusText: res.statusText};
 
-      console.log("nueva quiz perro")
-      setQuiz(json)
+      setQuiz(json);
   
     }catch(err){
-      let message = err.statusText || "Ocurrio un error";
+      let message = err.statusText || "Oops... Ocurrio un error";
     }
   }
 
@@ -58,13 +58,13 @@ const App = () => {
   return (
     <div className="App">
       {inGame 
-        ? <Game 
-            toggleInGame={toggleInGame}
+        ? <Game
             quiz={quiz}
             getQuiz={getQuiz}
           /> 
         : <Home startQuiz={startQuiz} />
       }
+      <NavBar toggleInGame={toggleInGame} />
       <Background inGame={inGame} />
     </div>
   );

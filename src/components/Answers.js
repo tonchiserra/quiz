@@ -38,8 +38,8 @@ const Answers = ({correct, incorrect, showNextQuestion, index, toggleLose}) => {
 
   const isIncorrect = (el) => {
     answers.map(el => {
-      (el === correct) ? document.getElementById(el).style.backgroundColor = "var(--green-color)"
-      : document.getElementById(el).style.backgroundColor = "var(--red-color)";
+      (el === correct) ? (document.getElementById(el).style.backgroundColor = "var(--green-color)")
+      : (document.getElementById(el).style.backgroundColor = "var(--red-color)");
     })
     setTimeout(function(){toggleLose()}, 1000)
   }

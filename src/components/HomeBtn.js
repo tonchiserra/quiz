@@ -1,6 +1,6 @@
-const HomeBtn = ({toggleInGame}) => {
+const HomeBtn = ({toggleInGame, HomeIcon}) => {
   return(
-    <button onClick={() => toggleInGame()}>Home</button>
+    <button onClick={() => toggleInGame()}><img alt="Home" src={HomeIcon} /></button>
   );
 }
 

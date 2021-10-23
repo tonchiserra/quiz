@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Answers from "./Answers";
-import HomeBtn from "./HomeBtn";
 
 const QuestionContainer = styled.div`
   && {
@@ -24,7 +23,7 @@ const QuestionContainer = styled.div`
   .question {
     padding: 1rem;
     margin: 0;
-    height: 30vh;
+    height: 25vh;
     display: flex;
     align-items: center;
   }
@@ -36,7 +35,7 @@ const QuestionContainer = styled.div`
   }
 `;
 
-const Questions = ({quiz, toggleInGame, getQuiz, toggleLose}) => {
+const Questions = ({quiz, getQuiz, toggleLose}) => {
   const [index, setIndex] = useState(0);
 
   async function showNextQuestion() {
@@ -51,7 +50,7 @@ const Questions = ({quiz, toggleInGame, getQuiz, toggleLose}) => {
   return(
     <QuestionContainer>
       <div className="category">
-        <h1>{quiz.results[index].category}</h1>
+        <h1>{quiz.results[index].category.toUpperCase()}</h1>
       </div>
       <div className="question">
         <p>{quiz.results[index].question}</p>
@@ -63,8 +62,6 @@ const Questions = ({quiz, toggleInGame, getQuiz, toggleLose}) => {
         index={index}
         toggleLose={toggleLose}
       />
-
-      <HomeBtn toggleInGame={toggleInGame} />
     </QuestionContainer>
   );
 }

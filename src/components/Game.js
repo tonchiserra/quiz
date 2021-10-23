@@ -2,7 +2,7 @@ import { useState } from "react";
 import Questions from "./Questions";
 import ScoreScreen from "./ScoreScreen";
 
-const Game = ({quiz, toggleInGame, getQuiz}) => {
+const Game = ({quiz, getQuiz}) => {
 
   const [lose, setLose] = useState(false);
 
@@ -14,11 +14,9 @@ const Game = ({quiz, toggleInGame, getQuiz}) => {
     <div>
       {lose
         ? <ScoreScreen
-            toggleInGame={toggleInGame}
           />
         : <Questions
             quiz={quiz}
-            toggleInGame={toggleInGame}
             getQuiz={getQuiz}
             toggleLose={toggleLose}
           />

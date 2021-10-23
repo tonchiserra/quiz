@@ -1,10 +1,7 @@
-import HomeBtn from "./HomeBtn";
-
-const ScoreScreen = ({toggleInGame}) => {
+const ScoreScreen = () => {
   return(
     <div>
       Perdiste
-      <HomeBtn toggleInGame={toggleInGame} />
     </div>
   );
 }
